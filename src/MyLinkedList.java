@@ -1,4 +1,4 @@
-public class MyLinkedList<E>  {
+public class MyLinkedList<E> {
     private Node<E> head, tail;
 
     public MyLinkedList() {
@@ -67,8 +67,40 @@ public class MyLinkedList<E>  {
         }
     }
 
+    //contains method
+    public boolean contains(E item) {
+        Node<E> ptr = head;
+        while (ptr != null) {
+            if (((Comparable)ptr.element).compareTo(item) == 0) {
+                return true;
+            }
+            ptr = ptr.next;
+        }
+        return false;
+    }
 
+    public boolean checkDouble() {
+        MyLinkedList<Passenger> newList = new MyLinkedList<>();
 
+        Node<Passenger> current = (Node<Passenger>) head;
+        while (current != null) {
+            if (!newList.contains(current.element)) {
+                newList.append(current.element);
+            }
+            current = current.next;
+        }
+        return newList.checkDouble();
+    }
+
+    public void displayPassengers() {
+         Node<E> current = head;
+
+        while (current != null) {
+            Passenger passenger = (Passenger) current.element;
+            System.out.println(passenger);
+            current = current.next;
+        }
+    }
 
 
     public boolean delete(E item)

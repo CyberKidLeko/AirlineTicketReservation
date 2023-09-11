@@ -1,5 +1,5 @@
 public class Passenger {
-    private long id;
+    private String id;
     private String name;
     private String contactNumber;
 
@@ -7,13 +7,14 @@ public class Passenger {
 
     }
 
-    public Passenger(String name, long id, String contactNumber){
-        setId(id);
+    public Passenger(String name, String id, String contactNumber){
         setName(name);
+        setId(id);
         setContactNumber(contactNumber);
     }
 
-    public void setId(long id){
+    //mutators
+    public void setId(String id){
         this.id = id;
     }
     public void setName(String name){
@@ -23,7 +24,9 @@ public class Passenger {
         this.contactNumber = contactNumber;
     }
 
-    public long getId(){
+
+    //accessors
+    public String getId(){
         return id;
     }
     public String getName(){
@@ -34,7 +37,10 @@ public class Passenger {
         return contactNumber;
     }
 
+
+    /*String for testing the program*/
+    @Override
     public String toString(){
-        return String.format("%-13d, %s, %s", getId(), getName(), getContactNumber());
+        return String.format("ID: %s, Name: %s, Contact Number: %s", getId(), getName(), getContactNumber());
     }
 }

@@ -1,44 +1,43 @@
 public class Flight {
-    private int flightNumber;
+    private String flightNumber;
     private MyLinkedList<Passenger> passengers;
 
     public Flight(){
 
     }
 
-    public Flight(int flightNumber){
+    public Flight(String flightNumber){
         setFlightNumber(flightNumber);
         this.passengers = new MyLinkedList<>();
     }
-    public void setFlightNumber(int flightNumber) {
+    //mutator
+    public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
     }
 
-
-    public int getFlightNumber() {
+    //accessor
+    public String getFlightNumber() {
         return flightNumber;
     }
 
 
-    public void reserveTicket(String name, long id, String contactNumber){
-        Passenger passenger = new Passenger(name, id, contactNumber);
-        passengers.append(passenger);
-
+    public void reserveTicket(Passenger passenger) {
+        passengers.append(passenger);//adds passenger to list
     }
 
-    public void cancelTicket(){
-
+    public void cancelTicket(Passenger passenger) {
+        passengers.delete(passenger);//removes passenger from list
     }
 
-    public void checkTicket(){
-
+    public boolean checkTicket(Passenger passenger) {
+        return passengers.contains(passenger);// see if list contains certain value
     }
 
-    public void displayPassengers(){
 
-    }
 
+
+    //testing toString
     public String toString(){
-        return String.format("%d, %d", getFlightNumber());
+        return String.format("%s", getFlightNumber());
     }
 }
